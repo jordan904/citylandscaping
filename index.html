@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Landscape — Premium Landscaping Services</title>
+  <meta name="description" content="City Landscape — professional landscaping and lawn care services in Moncton, North End and Dieppe. Premium outdoor transformations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --deep-green: #1a3328;
+      --forest: #2a4d3a;
+      --charcoal: #1e1e1e;
+      --dark-gray: #2a2a2a;
+      --medium-gray: #6b6b6b;
+      --light-gray: #e8e4df;
+      --off-white: #f7f4f0;
+      --cream: #faf8f5;
+      --brass: #c4a265;
+      --brass-light: #d4b87a;
+      --brass-dark: #a8884f;
+      --navy: #1e2a4a;
+      --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Typography ── */
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 1rem;
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-subtext {
+      font-size: 1.05rem;
+      color: var(--medium-gray);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* ── Layout ── */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 7rem 0;
+    }
+
+    /* ── Reveal animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Navigation ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(26, 51, 40, 0.97);
+      padding: 0.75rem 0;
+      box-shadow: 0 2px 24px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 42px;
+      width: auto;
+      border-radius: 4px;
+    }
+
+    .nav-logo-text {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--brass-light);
+    }
+
+    .nav-cta {
+      font-size: 0.8rem !important;
+      padding: 0.6rem 1.5rem;
+      border: 1px solid var(--brass);
+      color: var(--brass-light) !important;
+      transition: all 0.3s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--brass);
+      color: #fff !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/photos/cover.jpg') center/cover no-repeat;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(26, 51, 40, 0.92) 0%,
+        rgba(26, 51, 40, 0.7) 40%,
+        rgba(30, 30, 30, 0.6) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding-top: 6rem;
+    }
+
+    .hero-tagline {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--brass-light);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroFadeUp 0.8s 0.3s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.75rem, 6vw, 4.5rem);
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroFadeUp 0.8s 0.5s ease forwards;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroFadeUp 0.8s 0.7s ease forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroFadeUp 0.8s 0.9s ease forwards;
+    }
+
+    @keyframes heroFadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-divider {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--cream), transparent);
+      z-index: 2;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .hero-scroll:hover {
+      color: var(--brass-light);
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-scroll-line::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--brass-light);
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    @keyframes scrollPulse {
+      0% { top: -100%; }
+      50% { top: 100%; }
+      100% { top: 100%; }
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.25rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.35s ease;
+    }
+
+    .btn-primary {
+      background: var(--brass);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--brass-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(196, 162, 101, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--brass-light);
+      color: var(--brass-light);
+    }
+
+    .btn-dark {
+      background: var(--deep-green);
+      color: #fff;
+    }
+
+    .btn-dark:hover {
+      background: var(--forest);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26, 51, 40, 0.3);
+    }
+
+    /* ── About ── */
+    .about {
+      background: var(--cream);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: -1.5rem;
+      left: -1.5rem;
+      width: 100%;
+      height: 100%;
+      border: 1px solid var(--brass);
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .about-text p {
+      color: var(--medium-gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 2.25rem;
+      font-weight: 600;
+      color: var(--deep-green);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--medium-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Services ── */
+    .services {
+      background: var(--deep-green);
+      color: #fff;
+    }
+
+    .services .section-heading {
+      color: #fff;
+    }
+
+    .services .section-subtext {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .services-header .section-subtext {
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2.5rem 2rem;
+      transition: all 0.4s ease;
+    }
+
+    .service-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(196, 162, 101, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .service-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--brass-light);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .service-card h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.7;
+    }
+
+    .service-card ul {
+      list-style: none;
+      margin-top: 1.25rem;
+    }
+
+    .service-card ul li {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.55);
+      padding: 0.35rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .service-card ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 6px;
+      height: 1px;
+      background: var(--brass);
+    }
+
+    /* ── Portfolio / Gallery ── */
+    .portfolio {
+      background: var(--cream);
+    }
+
+    .portfolio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+    }
+
+    .portfolio-gallery {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark-gray);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26, 51, 40, 0.6), transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.4s ease;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-caption span {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .gallery-caption small {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--brass-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Featured / Poster ── */
+    .featured {
+      background: var(--off-white);
+      border-top: 1px solid var(--light-gray);
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .featured-image {
+      position: relative;
+    }
+
+    .featured-image img {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      display: block;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
+    }
+
+    .featured-image::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      width: 80%;
+      height: 80%;
+      background: var(--brass);
+      opacity: 0.08;
+      z-index: -1;
+    }
+
+    .featured-text h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-text p {
+      color: var(--medium-gray);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .highlight-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .highlight-list li {
+      padding: 0.65rem 0;
+      padding-left: 1.75rem;
+      position: relative;
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .highlight-list li:last-child {
+      border-bottom: none;
+    }
+
+    .highlight-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      background: var(--brass);
+      transform: rotate(45deg) translateY(-50%);
+    }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+      background: var(--charcoal);
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .cta-banner p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-banner .btn-primary {
+      font-size: 0.9rem;
+      padding: 1.1rem 2.75rem;
+    }
+
+    /* ── Contact ── */
+    .contact {
+      background: var(--cream);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+    }
+
+    .contact-info h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info > p {
+      color: var(--medium-gray);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-detail-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: var(--deep-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-detail-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--brass-light);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .contact-detail-text {
+      padding-top: 0.15rem;
+    }
+
+    .contact-detail-text strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-detail-text span {
+      font-size: 0.95rem;
+      color: var(--medium-gray);
+    }
+
+    .contact-detail-text a {
+      font-size: 0.95rem;
+      color: var(--medium-gray);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-detail-text a:hover {
+      color: var(--brass);
+    }
+
+    .contact-form {
+      background: #fff;
+      padding: 3rem;
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.06);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--light-gray);
+      background: var(--cream);
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      transition: border-color 0.3s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--brass);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      margin-top: 0.5rem;
+    }
+
+    .form-submit .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--charcoal);
+      padding: 4rem 0 2rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand img {
+      height: 36px;
+      width: auto;
+      border-radius: 4px;
+    }
+
+    .footer-brand-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .footer-tagline {
+      font-size: 0.9rem;
+      max-width: 280px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 4rem;
+    }
+
+    .footer-links h4 {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-links a {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--brass-light);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--brass-light);
+    }
+
+    /* ── Mobile Menu ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 51, 40, 0.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--brass-light);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .about-grid,
+      .featured-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .portfolio-gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 5rem 0;
+      }
+
+      .container {
+        padding: 0 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .about-image::before {
+        display: none;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form {
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-image {
+        order: -1;
+      }
+
+      .featured-image img {
+        max-width: 100%;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-content {
+        padding-top: 8rem;
+      }
+
+      .hero-scroll {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="assets/photos/photo_004.jpg" alt="City Landscape logo">
+        <span class="nav-logo-text">City Landscape</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <p class="hero-tagline">Professional Landscaping &amp; Lawn Care</p>
+      <h1>Transforming Outdoor Spaces with Precision</h1>
+      <p class="hero-description">
+        Premium landscaping services for discerning homeowners in Moncton's North End and Dieppe.
+        From hardscaping and retaining walls to meticulous lawn maintenance.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Request a Consultation</a>
+        <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+      </div>
+    </div>
+    <div class="hero-divider"></div>
+    <a href="#about" class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </a>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="assets/photos/photo_001.jpg" alt="Poolside patio project with custom pavers and retaining wall" loading="lazy">
+        </div>
+        <div class="about-text reveal">
+          <p class="section-label">About Us</p>
+          <h2 class="section-heading">For All Your Landscape Needs</h2>
+          <p>
+            City Landscape is a professional landscaping company serving residential clients
+            across Moncton's North End and Dieppe. We specialize in creating outdoor spaces
+            that combine function, durability, and refined aesthetics.
+          </p>
+          <p>
+            From custom paver patios and retaining walls to complete lawn care programs,
+            every project receives the same level of care and craftsmanship. We take pride
+            in clean execution, consistent scheduling, and results that speak for themselves.
+          </p>
+          <div class="about-stats">
+            <div>
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Residential Focus</div>
+            </div>
+            <div>
+              <div class="stat-number">2</div>
+              <div class="stat-label">Regions Served</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-heading">Our Services</h2>
+        <p class="section-subtext">
+          Comprehensive landscaping and lawn care tailored to your property.
+          Multiple service levels available to fit your needs.
+        </p>
+      </div>
+      <div class="services-grid">
+        <!-- Landscaping -->
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2v4M2 12h4M18 12h4M12 18v4" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Landscape Design</h3>
+          <p>Complete outdoor transformations including hardscaping, garden design, and retaining walls built to last.</p>
+          <ul>
+            <li>Custom paver patios</li>
+            <li>Retaining walls</li>
+            <li>Garden beds and planting</li>
+            <li>Grading and drainage</li>
+          </ul>
+        </div>
+        <!-- Lawn Mowing -->
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M3 14h18M3 18h18" stroke-linecap="round"/><path d="M12 3v7" stroke-linecap="round"/><path d="M8 6l4-3 4 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Lawn Mowing</h3>
+          <p>Professional, reliable lawn care with clean cuts and consistent scheduling throughout the season.</p>
+          <ul>
+            <li>One-time cuts</li>
+            <li>Weekly maintenance</li>
+            <li>Bi-weekly maintenance</li>
+            <li>Full lawn care packages</li>
+          </ul>
+        </div>
+        <!-- Maintenance -->
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Property Maintenance</h3>
+          <p>Seasonal property care to keep your outdoor spaces looking their best, year-round.</p>
+          <ul>
+            <li>Spring and fall cleanups</li>
+            <li>Mulching and edging</li>
+            <li>Hedge and shrub trimming</li>
+            <li>Seasonal planting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <div>
+          <p class="section-label">Our Work</p>
+          <h2 class="section-heading">Recent Projects</h2>
+        </div>
+      </div>
+      <div class="portfolio-gallery">
+        <div class="gallery-item reveal">
+          <img src="assets/photos/cover.jpg" alt="Completed poolside patio with retaining wall and landscaping" loading="lazy">
+          <div class="gallery-caption">
+            <span>Poolside Hardscape</span>
+            <small>Patio / Retaining Wall</small>
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="assets/photos/photo_001.jpg" alt="Custom paver installation and retaining wall construction" loading="lazy">
+          <div class="gallery-caption">
+            <span>Paver Installation</span>
+            <small>Hardscaping</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Poster -->
+  <section class="featured" id="featured">
+    <div class="container">
+      <div class="featured-grid">
+        <div class="featured-text reveal">
+          <p class="section-label">Now Accepting New Clients</p>
+          <h2>Limited Spots Available This Season</h2>
+          <p>
+            We are currently accepting new residential clients in Moncton's North End and Dieppe.
+            Whether you need a one-time service or a full-season maintenance package,
+            we have flexible options to keep your property looking its best.
+          </p>
+          <ul class="highlight-list">
+            <li>Reliable, professional service</li>
+            <li>Clean cuts and consistent scheduling</li>
+            <li>Multiple service levels to fit your needs</li>
+            <li>Serving North End and Dieppe</li>
+          </ul>
+          <a href="#contact" class="btn btn-dark">Secure Your Spot</a>
+        </div>
+        <div class="featured-image reveal">
+          <img src="assets/photos/photo_006.jpg" alt="City Landscape services flyer" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container reveal">
+      <h2>Ready to Transform Your Property?</h2>
+      <p>Contact us today for a free consultation and estimate.</p>
+      <a href="tel:5069620082" class="btn btn-primary">Call 506-962-0082</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label">Get In Touch</p>
+          <h2>Start Your Project</h2>
+          <p>
+            Reach out for a free estimate or to discuss your landscaping needs.
+            We respond to all inquiries within 24 hours.
+          </p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Phone</strong>
+              <a href="tel:5069620082">506-962-0082</a>
+              <br><span>Call or text</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Service Area</strong>
+              <span>Moncton North End &amp; Dieppe, NB</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Availability</strong>
+              <span>Now accepting new clients for the season</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required placeholder="506-000-0000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="service">Service Interested In</label>
+            <select id="service" name="service">
+              <option value="">Select a service</option>
+              <option value="landscape-design">Landscape Design</option>
+              <option value="lawn-mowing">Lawn Mowing</option>
+              <option value="property-maintenance">Property Maintenance</option>
+              <option value="full-package">Full Lawn Care Package</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Details</label>
+            <textarea id="message" name="message" placeholder="Tell us about your property and what you're looking for..."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-dark">Send Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">
+            <img src="assets/photos/photo_004.jpg" alt="City Landscape logo">
+            <span class="footer-brand-name">City Landscape</span>
+          </div>
+          <p class="footer-tagline">Professional landscaping and lawn care for residential properties in Moncton's North End and Dieppe.</p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#services">Landscape Design</a></li>
+              <li><a href="#services">Lawn Mowing</a></li>
+              <li><a href="#services">Property Maintenance</a></li>
+              <li><a href="#services">Seasonal Packages</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:5069620082">506-962-0082</a></li>
+              <li><a href="#contact">Request a Quote</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>2026 City Landscape. All rights reserved.</span>
+        <a href="https://www.facebook.com/profile.php?id=61556173875044" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Nav scroll effect ──
+    const nav = document.getElementById('nav');
+    function updateNav() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // ── Mobile menu ──
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      menu.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeMobile() {
+      toggle.classList.remove('active');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Scroll reveal ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // ── Form handler ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+
+      btn.textContent = 'Sent — We\'ll Be in Touch';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+
+      setTimeout(() => {
+        form.reset();
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.style.opacity = '';
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
