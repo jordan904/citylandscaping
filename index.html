@@ -223,6 +223,14 @@
       position: absolute;
       inset: 0;
       background: url('assets/photos/cover.jpg') center/cover no-repeat;
+      transform: scale(1.12);
+      animation: heroZoomOut 8s ease-out forwards;
+    }
+
+    @keyframes heroZoomOut {
+      to {
+        transform: scale(1);
+      }
     }
 
     .hero-bg::after {
@@ -252,6 +260,7 @@
       text-transform: uppercase;
       color: var(--brass-light);
       margin-bottom: 1.5rem;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
       opacity: 0;
       transform: translateY(20px);
       animation: heroFadeUp 0.8s 0.3s ease forwards;
@@ -263,6 +272,7 @@
       color: #fff;
       line-height: 1.1;
       margin-bottom: 1.5rem;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
       opacity: 0;
       transform: translateY(20px);
       animation: heroFadeUp 0.8s 0.5s ease forwards;
@@ -274,6 +284,7 @@
       line-height: 1.75;
       margin-bottom: 2.5rem;
       max-width: 520px;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
       opacity: 0;
       transform: translateY(20px);
       animation: heroFadeUp 0.8s 0.7s ease forwards;
