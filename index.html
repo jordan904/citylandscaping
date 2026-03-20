@@ -1027,6 +1027,11 @@
 
     /* ── Responsive ── */
     @media (max-width: 1024px) {
+      .hero > .container.hero-content {
+        max-width: 480px;
+        padding-left: 2rem;
+      }
+
       .about-grid,
       .featured-grid,
       .contact-grid {
@@ -1116,6 +1121,12 @@
 
       .about-stats {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .hero > .container.hero-content {
+        max-width: 100%;
+        padding: 0 1.25rem;
+        margin: 0;
       }
 
       .hero-content {
